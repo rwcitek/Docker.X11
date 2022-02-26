@@ -3,7 +3,7 @@ Getting large X11 programs to run in Docker
 
 
 ## Gimp in Docker
-
+```bash
 docker run \
   --rm \
   -i \
@@ -13,9 +13,10 @@ docker run \
   -v gimp-bin:/data \
   gimp:latest \
     /bin/bash -c 'tar -C "$PREFIX" -xzf /data/gimp-internal.tar.gz && gimp'
+```
 
 ## LibreOffice in Docker
-
+```bash
 docker run \
   -d \
   --name=libreoffice \
@@ -26,6 +27,6 @@ docker run \
   -v /tmp/config:/config \
   --restart unless-stopped \
   lscr.io/linuxserver/libreoffice
-
+```
 
 
