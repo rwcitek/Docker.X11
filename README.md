@@ -1,8 +1,8 @@
-# Docker.X11
-Getting large X11 programs to run in Docker on a Chromebook.
+# Docker with X11/Wayland
+Getting large X11/Wayland programs to run in Docker on a Chromebook.
 
 
-## Gimp in Docker
+## Gimp
 ```bash
 docker run \
   --rm \
@@ -15,7 +15,7 @@ docker run \
     /bin/bash -c 'tar -C "$PREFIX" -xzf /data/gimp-internal.tar.gz && gimp'
 ```
 
-## LibreOffice in Docker
+## LibreOffice
 ```bash
 docker run \
   -d \
