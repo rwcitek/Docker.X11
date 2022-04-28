@@ -1,5 +1,5 @@
 # Docker.X11
-Getting large X11 programs to run in Docker
+Getting large X11 programs to run in Docker on a Chromebook.
 
 
 ## Gimp in Docker
@@ -29,4 +29,18 @@ docker run \
   lscr.io/linuxserver/libreoffice
 ```
 
-
+## Octave
+```bash
+docker run \
+  --rm \
+  --env "DISPLAY=$DISPLAY" \
+  --volume "$HOME/.Xauthority:/root/.Xauthority:rw" \
+  --volume /tmp/.X11-unix:/tmp/.X11-unix \
+  --hostname $HOSTNAME \
+  --user root \
+  --env "HOME=/root" \
+  --workdir /root \
+  --entrypoint octave \
+  gnuoctave/octave:7.1.0 \
+  --gui
+```
