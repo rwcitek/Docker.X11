@@ -32,14 +32,16 @@ docker run \
 ## Octave
 ```bash
 docker run \
-  --rm \
+  -d \
+  --name octave \
   --env "DISPLAY=$DISPLAY" \
   --volume "$HOME/.Xauthority:/root/.Xauthority:rw" \
   --volume /tmp/.X11-unix:/tmp/.X11-unix \
+  --volume "${PWD}":/tmp/octave/ \
   --hostname $HOSTNAME \
   --user root \
   --env "HOME=/root" \
-  --workdir /root \
+  --workdir /tmp/octave/ \
   --entrypoint octave \
   gnuoctave/octave:7.1.0 \
   --gui
