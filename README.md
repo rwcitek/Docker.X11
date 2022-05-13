@@ -30,6 +30,7 @@ docker run \
 ```
 
 ## Octave
+- https://hub.docker.com/r/gnuoctave/octave
 ```bash
 docker run \
   -d \
