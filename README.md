@@ -33,7 +33,7 @@ docker run \
 - https://hub.docker.com/r/gnuoctave/octave
 ```bash
 docker run \
-  -d \
+  --detach \
   --env "DISPLAY=${DISPLAY}" \
   --hostname ${HOSTNAME} \
   --volume "${HOME}/.Xauthority:/root/.Xauthority:rw" \
