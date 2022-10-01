@@ -47,3 +47,46 @@ docker run \
   gnuoctave/octave:7.1.0 \
   --gui
 ```
+
+## Python Turtle, a LOGO implementation
+- https://realpython.com/beginners-guide-python-turtle/
+```bash
+# start a docker container
+docker run \
+  --detach \
+  --env "DISPLAY=${DISPLAY}" \
+  --hostname ${HOSTNAME} \
+  --volume "${HOME}/.Xauthority:/root/.Xauthority:rw" \
+  --volume /tmp/.X11-unix:/tmp/.X11-unix \
+  --name turtle \
+  ubuntu:latest sleep inf
+
+# install python
+{ <<'eof' cat
+  apt-get update &&
+  DEBIAN_FRONTEND=noninteractive apt-get install -y python3-pip python3-tk
+eof
+} | docker exec -i turtle bash
+
+
+# run a sample program
+{ <<'eof' cat
+import time
+import turtle
+s = turtle.getscreen()
+t = turtle.Turtle()
+
+time.sleep(10)
+
+t.speed(10)
+i=40
+for _ in range(i):
+  for _ in range(4):
+    t.right(90)
+    t.forward(100)
+  t.right(360/i)
+
+time.sleep(10)
+eof
+} | docker exec -i turtle python3
+```
