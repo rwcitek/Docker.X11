@@ -60,14 +60,16 @@ docker run \
   --volume /tmp/.X11-unix:/tmp/.X11-unix \
   --name turtle \
   ubuntu:22.04 sleep inf
-
+```
+```bash
 # install python
 <<'eof' docker exec -i turtle bash
   export DEBIAN_FRONTEND=noninteractive
   apt-get update
   apt-get install -y python3-pip python3-tk
 eof
-
+```
+```bash
 # run a sample program
 <<'eof' docker exec -i turtle python3
 import time
