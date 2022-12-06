@@ -59,18 +59,17 @@ docker run \
   --volume "${HOME}/.Xauthority:/root/.Xauthority:rw" \
   --volume /tmp/.X11-unix:/tmp/.X11-unix \
   --name turtle \
-  ubuntu:latest sleep inf
+  ubuntu:22.04 sleep inf
 
 # install python
-{ <<'eof' cat
-  apt-get update &&
-  DEBIAN_FRONTEND=noninteractive apt-get install -y python3-pip python3-tk
+<<'eof' docker exec -i turtle bash
+  export DEBIAN_FRONTEND=noninteractive
+  apt-get update
+  apt-get install -y python3-pip python3-tk
 eof
-} | docker exec -i turtle bash
-
 
 # run a sample program
-{ <<'eof' cat
+<<'eof' docker exec -i turtle python3
 import time
 import turtle
 s = turtle.getscreen()
@@ -88,5 +87,6 @@ for _ in range(i):
 
 time.sleep(10)
 eof
-} | docker exec -i turtle python3
 ```
+
+
