@@ -1,6 +1,6 @@
 This is still a work in progress.  Has not been tested.
 
-## Start a contianer in the background
+## Start a container in the background
 ```bash
 docker run \
   --rm \
